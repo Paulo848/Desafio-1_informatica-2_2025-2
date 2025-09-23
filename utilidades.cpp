@@ -1,125 +1,78 @@
 #include "utilidades.h"
 #include <iostream>
-#include <fstream>
-using namespace std;
 
-char* leerArchivo(const char* nombreArchivo, int &tamano)
+int comprimirRLE(const char* entrada, int len, char* out, int* len_out)
 {
-    ifstream archivo(nombreArchivo, ios::binary);
-    if (!archivo.is_open())
-    {
-        cout << "Error al abrir el archivo." << endl;
-        tamano = 0;
-        return nullptr;
-    }
 
-    // Mover al final y obtener tamaño
-    archivo.seekg(0, ios::end);
-    tamano = archivo.tellg();
-    archivo.seekg(0, ios::beg);
-
-    // Crear buffer dinámico
-    char* buffer = new char[tamano + 1];
-
-    // Leer contenido
-    archivo.read(buffer, tamano);
-    buffer[tamano] = '\0'; // terminar como string C
-
-    archivo.close();
-    return buffer;
-}
-
-
-
-void rotar_derecha(unsigned char* in, int bits, unsigned char* out, int size) {
-    for (int i = 0; i < size; ++i)
-    {
-        out[i] = (in[i] >> bits) | (in[i] << (8 - bits));
-    }
-}
-
-void rotar_izquierda(unsigned char* in, int bits, unsigned char* out, int size) {
-    for (int i = 0; i < size; ++i)
-    {
-        out[i] = (in[i] << bits) | (in[i] >> (8 - bits));
-    }
-}
-
-void aplicar_xor(unsigned char* in, unsigned char mask, unsigned char* out, int size) {
-    for (int i = 0; i < size; ++i)
-    {
-        out[i] = in[i] ^ mask;
-    }
-}
-
-void comprimirRLE(const char* entrada, char* salida, int len)
-{
-    int k = 0; // índice de salida
+    int k = 0;
 
     for (int i = 0; i < len; )
     {
         char actual = entrada[i];
         int count = 1;
 
-        // contar repeticiones
-        while (i + count < len && entrada[i + count] == actual)
-        {
-            count++;
+        while (i + count < len && entrada[i + count] == actual) count++;
+
+        int larg_count;
+        char* buffer = int_to_arr(count, &larg_count);
+
+        if(k+larg_count > len){
+            //cout << "i = " << i << " k = " << k << " learg_co = " << larg_cont << " len = " << len;
+            delete[] buffer;
+            return 1;
         }
 
-        // convertir count en string manualmente
-        char buffer[20]; // suficiente para un número grande
-        int numLen = sprintf(buffer, "%d", count);
+        for (int j = 0; j < larg_count; j++) out[k++] = buffer[j];
 
-        // copiar número
-        for (int j = 0; j < numLen; j++)
-        {
-            salida[k++] = buffer[j];
-        }
+        delete[] buffer;
 
-        // copiar símbolo
-        salida[k++] = actual;
+        out[k++] = actual;
 
-        // avanzar
         i += count;
     }
 
-    salida[k] = '\0'; // terminar como string C
+    *len_out = k;
+
+    return 0;
+
 }
 
-void comprimirRLE(const char* entrada, int len, char* salida)
-{
-    int k = 0; // índice de salida
+char* int_to_arr (const int n, int* len_out){
 
-    for (int i = 0; i < len; )
-    {
-        char actual = entrada[i];
-        int count = 1;
+    char* out;
 
-        // contar repeticiones
-        while (i + count < len && entrada[i + count] == actual)
-        {
-            count++;
-        }
+    int n_digits = 0;
+    int aux = n;
 
-        // convertir count a caracteres
-        char buffer[20];
-        int numLen = sprintf(buffer, "%d", count);
-
-        // copiar número al arreglo de salida
-        for (int j = 0; j < numLen; j++)
-        {
-            salida[k++] = buffer[j];
-        }
-
-        // copiar símbolo
-        salida[k++] = actual;
-
-        // avanzar al siguiente bloque
-        i += count;
+    while(aux > 0){
+        aux/=10;
+        n_digits++;
     }
 
-    salida[k] = '\0'; // terminar como string C
+    if(n_digits > 0){
+
+        out = new char[n_digits+1];
+
+        int n_copy = n;
+        for(int r = n_digits-1; r >= 0; r--){
+            out[r] = '0'+(n_copy % 10);
+            n_copy /= 10;
+        }
+
+        out[n_digits] = '\0';
+
+    }else{
+        out = new char[2];
+        out[0] = '0';
+        out[1] = '\0';
+    }
+
+
+
+    *len_out = n_digits;
+
+    return out;
+
 }
 
 void comprimirLZ78(const unsigned char* entrada, int len_in){
@@ -185,7 +138,7 @@ void comprimirLZ78(const unsigned char* entrada, int len_in){
             if (clave[j] == prefijo) { idx_pref = j; break; }
         }
 
-        cout << pos_ini[idx_pref] << ":" << (char)actual << "|";
+        // cout << pos_ini[idx_pref] << ":" << (char)actual << "|";
 
 
         clave[len_clv] = new unsigned char[len_n+2];
@@ -208,23 +161,23 @@ void comprimirLZ78(const unsigned char* entrada, int len_in){
         int idx_pref = 0;
         for (int j = 0; j < len_clv; ++j) { if (clave[j] == prefijo) { idx_pref = j; break; } }
 
-        cout << pos_ini[idx_pref];
+        // cout << pos_ini[idx_pref];
 
     }
 
-    cout << endl;
+    // cout << endl;
 
     for(int k_ = 0; k_ < len_clv ; k_++){
 
         int large = len_(clave[k_]);
 
-        cout << pos_ini[k_] << "-" << k_ << " : ";
+        // cout << pos_ini[k_] << "-" << k_ << " : ";
 
         for(int i_ = 0; i_ < large; i_++ ){
-            cout << clave[k_][i_+2];
+            // cout << clave[k_][i_+2];
         }
 
-        cout << endl;
+        // cout << endl;
 
     }
 
@@ -267,4 +220,26 @@ static inline void set_len(unsigned char* p, int LT) {
     unsigned char hi, lo;
     convert_int_doble_char(LT, &hi, &lo);
     p[0] = hi; p[1] = lo;
+}
+
+
+void rotar_derecha(unsigned char* in, int bits, unsigned char* out, int size) {
+    for (int i = 0; i < size; ++i)
+    {
+        out[i] = (in[i] >> bits) | (in[i] << (8 - bits));
+    }
+}
+
+void rotar_izquierda(unsigned char* in, int bits, unsigned char* out, int size) {
+    for (int i = 0; i < size; ++i)
+    {
+        out[i] = (in[i] << bits) | (in[i] >> (8 - bits));
+    }
+}
+
+void aplicar_xor(unsigned char* in, unsigned char mask, unsigned char* out, int size) {
+    for (int i = 0; i < size; ++i)
+    {
+        out[i] = in[i] ^ mask;
+    }
 }
