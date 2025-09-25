@@ -7,5 +7,9 @@ void leerArchivoEncriptado_N(char*& out, int N, int &len_enc);
 void leerArchivoPista_N(char*& out, int N, int &len_pist);
 
 void leerArchivo(char*& out, const char* nombreArchivo, int &tamano);
+void escribirArchivo(const char* in, const char* nombreArachivo, int len);
+
+void escribir_cadena_original(const unsigned char* in, int N, int len_in);
+void escribirArchivo(const unsigned char* in, const char* nombreArachivo, int len_in);
 
 #endif // FILES_H
