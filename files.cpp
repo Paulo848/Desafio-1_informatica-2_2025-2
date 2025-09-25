@@ -3,10 +3,19 @@
 #include <fstream>
 #include <iostream>
 
-void get_N_Encrip_Pista (char*& encriptado, int &len_encrip, char*& pista, int &len_pist, int &N){
+void get_N_Encrip_Pista (unsigned char*& encriptado, int &len_encrip, unsigned char*& pista, int &len_pist, int &N){
 
-    leerArchivoEncriptado_N(encriptado, N, len_encrip);
-    leerArchivoPista_N(pista, N, len_pist);
+    char* pista_char;
+    char* encriptado_char;
+
+    leerArchivoEncriptado_N(encriptado_char, N, len_encrip);
+    leerArchivoPista_N(pista_char, N, len_pist);
+
+    encriptado = new unsigned char[len_encrip];
+    for(int idx_encriptado = 0; idx_encriptado < len_encrip; idx_encriptado++ ) encriptado[idx_encriptado] = static_cast<unsigned char>(encriptado_char[idx_encriptado]);
+
+    pista = new unsigned char[len_pist];
+    for(int idx_pista = 0; idx_pista < len_pist; idx_pista++ ) pista[idx_pista] = static_cast<unsigned char>(pista_char[idx_pista]);
 
 }
 
