@@ -35,7 +35,7 @@ void desencriptar_descomprimir(const unsigned char* pista, int len_pista , const
         rotl = 3;
     }
     if(N == 4){
-        key = 0x40;
+        key = 0x5A;
         rotl = 3;
     }
 
@@ -169,8 +169,11 @@ void descomprimirRLE(const unsigned char* entrada, int len, unsigned char*& out,
         unsigned char letter = entrada[idx + 1];
         int n_letters = (static_cast<int>(entrada[idx]));
 
-        while(n_letters--) out[++index_out] = letter;
+        while(n_letters-- && (index_out+1) < len_out){
 
+            out[++index_out] = letter;
+
+        }
     }
 
     //std :: cout << "index_out = |" << index_out << " final out = | " << out[index_out] << " | len_out = | " << len_out << "| " << std :: endl;
@@ -325,33 +328,21 @@ void descomprimirLZ78(const unsigned char* entrada, int len_in, unsigned char*& 
     int len_dic = (len_in/3)+1;
     unsigned char ** dic_rec = new unsigned char*[len_dic];
 
-    int* dic_pos_ini = new int[len_dic];
-
     dic_rec[++idx_dic] = new unsigned char[2];
     set_len(dic_rec[idx_dic],0);
-    dic_pos_ini[0] = 0;
-
-    int posic_string = 0;
     int sum_strings = 0;
 
-    //std :: cout << "Informacion debug : len_in = |" << len_in << "| idx_dic = |" << idx_dic << "|" <<  " len_dic = |" << len_dic  << std :: endl;
+    bool input_valid = true;
 
-    for(int idx = 0; idx < len_in ; idx+=3){
+    for(int idx = 0; idx < len_in && input_valid ; idx+=3){
 
-        int pocision = (int)((entrada[idx] << 8) | entrada[idx+1]);
+        int posicion = (int)((entrada[idx] << 8) | entrada[idx+1]);
         unsigned char carct = entrada[idx+2];
 
-        int aux_idx_dic = pocision;
-        //for(int i = 0; i < idx_dic+1; i++) { if(dic_pos_ini[i] == pocision) aux_idx_dic = i; }
+        if(!imprimible(carct) || posicion > idx_dic){  input_valid = false; continue; }
 
-        //if(aux_idx_dic == -1)for(int i = 0; i < idx_dic+1; i++) std :: cout << "dic pos  = |" << dic_pos_ini[i] <<"| pocision = | " << pocision << std :: endl;
-
-        //std :: cout << " aux id dic : |" << aux_idx_dic << "| posicion = | " << pocision << "| len dic_pos_ini = |" << idx_dic << "|" << std :: endl;
-        unsigned char* prefijo = dic_rec[aux_idx_dic];
-        //std :: cout << "No hay fugas por aqui -----------------------" << std :: endl;
-        //std :: cout << "Informacion debug : aux_idx _dic = |" << aux_idx_dic << "| idx_dic = |" << idx_dic << "|" <<  " -----------------------" << std :: endl;
+        unsigned char* prefijo = dic_rec[posicion];
         int len_pref = len_of(prefijo);
-        //std :: cout << "No hay fugas por aqui -----------------------" << std :: endl;
         int len_nxt = len_pref+1;
         int inx_string = 2;
 
@@ -361,28 +352,12 @@ void descomprimirLZ78(const unsigned char* entrada, int len_in, unsigned char*& 
 
         set_len(dic_rec[idx_dic], len_nxt);
 
-        //std :: cout << "bandera -----------------len pref : " << len_pref << " len of dic idx : " << len_of(dic_rec[idx_dic]) << std :: endl;
-
         for( int idx_pre = 0; idx_pre < len_pref; idx_pre++ ) dic_rec[idx_dic][inx_string++] = prefijo[idx_pre+2]; //std :: cout << "entramos al  pref";}
         dic_rec[idx_dic][inx_string] = carct;
 
-        /*
-        std :: cout << "el dic_act = |";
-        for(int i = 2; i < len_nxt+2; i++)
-            std :: cout << static_cast<char>(dic_rec[idx_dic][i]);
-        std :: cout << "|" <<std :: endl;
-        */
-
-        //dic_pos_ini[idx_dic] = sum_strings-len_pref;
-        dic_pos_ini[idx_dic] = idx_dic;
-
-        //std :: cout << "se sobrevivio a la iteracion |" << idx << "|" << std :: endl;
-
     }
 
-    sum_strings;
-
-    // std :: cout << "idx dic : " << idx_dic << "- " << std :: endl;
+    if(!input_valid){ out = nullptr; std :: cerr << "el input es invalido para LZ78 " << std :: endl;return; }
 
     /*
     for(int k_ = 0; k_ < idx_dic+1 ; k_++){
@@ -400,21 +375,17 @@ void descomprimirLZ78(const unsigned char* entrada, int len_in, unsigned char*& 
     }
     */
 
-    // std :: cout << "la suma es = " << sum_strings << std :: endl;
-
     len_out = sum_strings;
     int idx_out = -1;
     out = new unsigned char[sum_strings];
 
     for (int idx_in = 0; idx_in < len_in; idx_in+=3){
 
-        int pocision = (int)((entrada[idx_in] << 8) | entrada[idx_in+1]);
+        int posicion = (int)((entrada[idx_in] << 8) | entrada[idx_in+1]);
         unsigned char carct = entrada[idx_in+2];
-
-        int aux_idx_dic = pocision;
         //for(int i = 0; i < idx_dic+1; i++) { if(dic_pos_ini[i] == pocision) aux_idx_dic = i; }
 
-        unsigned char* prefijo = dic_rec[aux_idx_dic];
+        unsigned char* prefijo = dic_rec[posicion];
 
         int len_pref = len_of(prefijo);
 
@@ -423,10 +394,9 @@ void descomprimirLZ78(const unsigned char* entrada, int len_in, unsigned char*& 
 
     }
 
-    for(int ixd = 0; ixd < len_dic; ixd++)delete[] dic_rec[ixd];
+    for(int ixd = 0; ixd < len_dic; ixd++) delete[] dic_rec[ixd];
 
     delete[] dic_rec;
-    delete[] dic_pos_ini;
 
 }
 
@@ -525,7 +495,7 @@ void aplicar_xor(const unsigned char* in, unsigned char mask, unsigned char* out
 void print_arr(const unsigned char* in, int len){
     for(int i = 0;
          i < len; i++){
-        if(inmprimible(in[i]))std :: cout << static_cast<char>(in[i]);
+        if(imprimible(in[i]))std :: cout << static_cast<char>(in[i]);
         else std :: cout << "#";
     }
     std :: cout << std :: endl;
@@ -534,7 +504,7 @@ void print_arr(const unsigned char* in, int len){
 void print_arr_RLE(const unsigned char* in, int len){
     for(int i = 0; i < len; i+=2){
         std :: cout << static_cast<int>(in[i]);
-        if(inmprimible(in[i+1]))std :: cout << static_cast<char>(in[i+1]);
+        if(imprimible(in[i+1]))std :: cout << static_cast<char>(in[i+1]);
         else std :: cout << "#";
     }
     std :: cout << std :: endl;
@@ -542,13 +512,13 @@ void print_arr_RLE(const unsigned char* in, int len){
 void print_arr_LZ(const unsigned char* in, int len){
     for(int i = 0; i < len; i += 3){
         std :: cout << (int)((in[i] << 8) | in[i+1]);
-        if(inmprimible(in[i+2]))std :: cout << static_cast<char>(in[i+2]);
+        if(imprimible(in[i+2]))std :: cout << static_cast<char>(in[i+2]);
         else std :: cout << "#";
     }
     std :: cout << std :: endl;
 }
 
-bool inmprimible(unsigned char un_car){
+bool imprimible(unsigned char un_car){
 
     char car = static_cast<char>(un_car);
     if(car >= 'A' && car <= 'Z') return true;

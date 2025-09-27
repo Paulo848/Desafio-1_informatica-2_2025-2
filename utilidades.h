@@ -20,6 +20,6 @@ void print_arr(const unsigned char* in, int len);
 void print_arr_RLE(const unsigned char* in, int len);
 void print_arr_LZ(const unsigned char* in, int len);
 
-bool inmprimible(unsigned char un_car);
+bool imprimible(unsigned char un_car);
 
 #endif // UTILIDADES_H
