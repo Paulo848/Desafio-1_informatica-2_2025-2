@@ -1,62 +1,61 @@
 #include <iostream>
-#include <utilidades.h>
-#include <files.h>
+#include <funciones.h>
+using namespace std;
 
-
-int main()
-{
-    int n_archivos;
-
-    std :: cout << "Ingrese la cantidad de archivos a desencriptar y descomprimir : " << std :: endl;
-    std :: cin >> n_archivos;
-
-    for(int n = 1; n <= n_archivos; n++){
-
-        int len_encrip = 0;
-        unsigned char* encriptado = nullptr;
-        int len_pist = 0;
-        unsigned char* pista = nullptr;
-
-        get_N_Encrip_Pista(encriptado, len_encrip, pista, len_pist, n);
-
-        //if(pista != nullptr) print_arr(pista,len_pist);
-        //if(encriptado != nullptr) print_arr(encriptado,len_encrip);
-
-        std :: cout << "................................... Lectura de archivo " << n << "..................................." << std :: endl;
-
-        /*
-        int len_compri_rle = 0;
-        unsigned char* compri_rle = nullptr;
-        comprimirRLE( encriptado, len_encrip, compri_rle, len_compri_rle);
-        print_arr_RLE(compri_rle,len_compri_rle);
-
-        int len_descom_rle = 0;
-        unsigned char* descom_rle = nullptr;
-        descomprimirRLE( compri_rle, len_compri_rle, descom_rle, len_descom_rle );
-        print_arr(descom_rle,len_descom_rle);
-
-        int len_compro_lz = 0;
-        unsigned char* compro_lz = nullptr;
-        comprimirLZ78(encriptado, len_encrip, compro_lz, len_compro_lz);
-        print_arr_LZ(compro_lz,len_compro_lz);
-
-        unsigned char* descom_lz = nullptr;
-        int len_descom_lz = 0;
-        descomprimirLZ78(compro_lz, len_compro_lz, descom_lz, len_descom_lz);
-        print_arr(descom_lz,len_descom_lz);
-
-        escribir_cadena_original(descom_lz, n, len_descom_lz);
-
-        */
-
-        unsigned char* out = nullptr;
-        int len_out = -1;
-        desencriptar_descomprimir(pista, len_pist , encriptado, len_encrip, out, len_out , n );
-
+bool buscar_patron(const unsigned char* text, int text_len,
+                   const unsigned char* pat, int pat_len,
+                   int* pos) {
+    if (pat_len > text_len) return false;
+    for (int i = 0; i <= text_len - pat_len; ++i) {
+        bool ok = true;
+        for (int j = 0; j < pat_len; ++j) {
+            if (text[i + j] != pat[j]) { ok = false; break; }
+        }
+        if (ok) { *pos = i; return true; }
     }
-
-    std :: cout << "................................... final ..................................." << std :: endl;
-
-    return 0;
-
+    return false;
 }
+
+/*
+  Busca rotacion (0..7) y key (0..255) tal que, al aplicar:
+    tmp = (enc[i] XOR key) rotado_right(rot)
+  el arreglo tmp contenga 'pista' como subsecuencia contigua.
+  Devuelve true si encontró alguna combinación. Si sí, escribe rot, key e index.
+*/
+
+
+int main() {
+    unsigned char original[16] = { 'H','E','L','L','O','H','E','L','L','O','H','E','L','L','O','s' };
+    int n = 16;
+
+    unsigned char cifrado[16];
+    for (int i = 0; i < n; ++i) {
+        unsigned char rotleft3 = (unsigned char)(((original[i] << 3) & 0xFFu) | (original[i] >> (8 - 3)));
+        cifrado[i] = (unsigned char)(rotleft3 ^ 0x5A);
+    }
+    unsigned char pista[3] = { 'H','E','L' };
+
+    int found_rot = -1, found_key = -1, found_index = -1;
+    bool ok = encontrar_rot_y_key(cifrado, n, pista, 3, &found_rot, &found_key, &found_index);
+
+    if (ok) {
+        cout << "Encontrado! rot = " << found_rot
+             << ", key = " << found_key
+             << ", index = " << found_index << '\n';
+        unsigned char buffer[5];
+        aplicar_xor_y_rotar(cifrado, buffer, n, found_key, found_rot);
+        cout << "Contenido tras desencriptar (decimal): ";
+        for (int i = 0; i < n; ++i) cout << (int)buffer[i] << ' ';
+        cout << '\n';
+
+        cout << "Contenido tras desencriptar (chars) : ";
+        for (int i = 0; i < n; ++i) cout << (char)buffer[i];
+        cout << '\n';
+    } else {
+        cout << "No se encontró ninguna combinacion rot/key que contenga la pista.\n";
+    }
+    return 0;
+}
+
+
+
