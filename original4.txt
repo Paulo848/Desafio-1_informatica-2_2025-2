@@ -1,2 +1,10 @@
-ZZQZRQZJIZZIZzIZrAZZAZbAZyZZyZ
-yZZqZ:qZ:iZZiZ"iZZaZÒaZÒZZZúZZZêZê	ZZ	Z’	ZZZ‚Z‚9ZZ9Zª9ZZ1Z[1Z[)ZZ)ZC)ZZ!Zs!ZsÙZZÙZÙZZÑZÑZÉZZÉZ3ÉZZÁZ#ÁZ#ùZZùZËùZZñZûñZûéZZéZãéZZáZ“áZ“™ZZ™Z»™ZZ‘Z«‘Z«‰ZZ‰ZP‰ZJQZRIZrIZjAZAZbyZyZ2qZ*iZÚaZÊaZòZúZâZŠ	Z’ZºZ¢9Zª1ZS1Z{)ZC!Zk!ZÙZÑZÑZ+ÉZ3ÁZÛÁZÃùZËñZóñZ›éZãáZ‹áZ³™Z»‘Z£‘ZH‰ZPQZ@IZpIZzAZ`AZyZqZiZÚiZ0aZ(ZØZĞ	ZÀZø9Zè1Zà)Z!ZˆÙZ¸ÑZ°ÉZ ÁZYùZIñZAéZqáZi™Z‘Z‰Z@QZ9IZ1AZ)yZqZÑiZ8aZÊZ(ZØ	ZĞZÀ9Zø1Zè)Zà!ZÙZˆÑZ¸ÉZ°ÁZ ùZYñZIéZAáZq™Zi‘Z‰ZQZIZ9AZ)AZyZqZÉiZÁZ&Zâ	ZÖZº9ZÆ1ZS)Zö!ZkÙZæÑZÉZ–ÁZÛùZ†ñZóéZ¶áZ‹™Z¦‘Z£‰ZWQZBIZGAZyZÙqZ2iZÉaZ0ZZš	ZŠZÎ9Z¢1Zş)Z{!ZîÙZÑZÉZ+ÁZùZÃñZ¾éZ›áZ®™Z³‘Z_‰ZP‰
+........................ METODOS Y PARAMETROS ........................
+Metodo de compresion: LZ78
+Parametros de encriptacion: 
+Clave (dec): 90
+Clave (hex): 0x5a
+Rotaciones: 3
+................................................................................................
+
+........................ CADENA DESENCRIPTADA Y DESCOMPRIMIDA ........................
+aaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz

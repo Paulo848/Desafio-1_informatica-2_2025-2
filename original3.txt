@@ -1,1 +1,10 @@
-@hK@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`“@`K@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`“@`K@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`“@`K@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`“@`K@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`“@`K@pS@p[@`c@`k@`s@`{@`@`@`@`@`#@`+@`3@`;@`Ã@`Ë@`Ó@`Û@`ã@`ë@`ó@`û@`ƒ@`‹@`
+........................ METODOS Y PARAMETROS ........................
+Metodo de compresion: RLE
+Parametros de encriptacion: 
+Clave (dec): 64
+Clave (hex): 0x40
+Rotaciones: 3
+................................................................................................
+
+........................ CADENA DESENCRIPTADA Y DESCOMPRIMIDA ........................
+aaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzzaaaabbbbbbccccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz

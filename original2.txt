@@ -1,4 +1,10 @@
-ZZ9ZZQZZ1ZZ!ZZ)ZZùZJ)ZJÁZZqZRqZZéZJAZQZZÁZZAZZñZZZZyZJyZ1Zz)ZjqZ*IZzÁZZÑZÚqZ*ÉZÒ!Z*9ZJaZšQZrZBQZ
-ÁZ*ZRéZÁZjÉZsÙZJ	ZJÉZšéZz9ZbyZzQZZÉZZIZÚÁZj!Z*iZR!Z+qZ*ZÉZ#QZC9ZÚ1ZÒ)ZJÙZJZ*QZZ	Zs)ZJùZÚÉZJ9ZsAZòÁZQZZ‰ZJ1ZÒqZrùZ39ZûyZyZzÉZÊqZR1ZÚ)ZÊ!ZJéZ)ZjñZ+QZC)Z"ÉZZ#9ZsqZZ™ZZÙZÃÉZÂ!ZûÁZZQZrÙZ0ùZëÉZÒùZ0ZšÉZ1ZzùZšyZ@ñZ#ÉZ)ZĞÁZ0ÙZû)Z()ZêÁZBZ*ùZëZšZÒÁZÓÉZÒAZšAZÒéZÒ9ZÒ‰Z:ZòqZ³)ZjZZaZÚQZùqZ*!Z+!ZvAZÚ9ZÓÁZ#ZZqZ"QZ*ÙZëyZÒyZ2ÉZêiZ:ùZ¢)ZVaZÚ!ZóñZS)ZŞQZ(ÁZZZáùZiQZ*ÁZ!ÉZÀyZÀùZsÉZ9ZX!Z²qZNqZryZ9Z‘Z_QZËQZQZ*1ZqZ.Z+ZøÁZÀAZbùZ`ZW!Z7QZNZ"!ZâÉZÚ	ZñQZSaZÒQZrQZøÉZHqZhQZ¸!Z(ÉZ¢ÁZÀqZ+aZ·ÁZ*qZàqZjQZ.ÉZ>AZ"ZòaZFÉZÊZbqZ^ùZÒaZîÁZÌñZZaZøQZK1Z¾qZß!Z®qZùZšqZ
-1Z÷ÁZ¯ùZPQZKAZ9ZšùZQZK9ZÚAZˆÁZkqZR9ZÂQZ²ñZ¯9ZRQZSyZÈZ÷QZNñZJiZŠaZzZ“!ZVqZ+ÉZJQZRZWQZ#!Z*ÑZŠÁZbZS9ZsQZqZ.qZ"qZ.9ZÇQZ®Z{qZùÉZsZëIZAZùZ!ZËÉZÚùZ\ÁRBÉZÊñZğÁZ†!Z+ùZHZTÁZ!Z+éZ]!ZKÙZ
-aZ¨9ZRñZYQZv)ZßÁZ/1ZzAZº)ZÈqZñZû™Z¸9Z0QZ4!ZgqZ*AZÚIZß1Z1ùZzZr1ZÀÁZ–yZ¸QZáQZ«qZ†qZ+1Zš!ZêÉZÙ!Z*yZ@!Zr!Z4yZš)ZÉZ©!ZrqR+ñZ]iRbÁZVAZš1ZméZ¹9RƒÁZ‹AZûZqZ‚qRšyZÂZ¿Z¯ARkZ¾!ZßQZw‘ZÁZ!R;)RëÁRkqZ)Z×Zú!Z³IZëAZPZšZÊQRiÙZÙyZ±QR›qZ€ÙZñqZrAZdéZ·	Zs1ZØyZ3éZWñRòyZIRÛZ]AZò!Z41RÓ!ZvÉZ¸ÉZ_qZqZèùZëQZ"AR¨ÁZ¸qZ+ÁZòQZKQZÁÁZyZZiZÿ9Z·ÉZOqZ%ARNQRqZ"ùZQZ1RsRv9Z
+........................ METODOS Y PARAMETROS ........................
+Metodo de compresion: LZ78
+Parametros de encriptacion: 
+Clave (dec): 90
+Clave (hex): 0x5a
+Rotaciones: 3
+................................................................................................
+
+........................ CADENA DESENCRIPTADA Y DESCOMPRIMIDA ........................
+lamontanaselevacasascuidadasmontesbosquesrioslagosanimalessilvestrespajarosvolandoarbustosfloresherbasiluminapaisajesnaturalesconsolazamientoalrededordelmundoaventurasincreiblesexploradoresviajanporterritoriosremotosdescubriendosorprendentesmisterioshistoricoscivilizacionesantiguastesorosocultosbibliotecasperdidasartefactosantiguoshumanidadeshistoriassorprendentesrelatoslegendasleyendasfantasmasespiritusencantamientosmagicosbrujeriamagianaturalezapoderosasenergiassecretasproteccionguardianesantiguossantuariosritualesmisteriossecretoselementosnaturalescielostaraleslucesestrelladaslunallamadavientoaguafuegohumotierraalientabosquesanimalesavespecesplantassilvestresherbascultivosfrutalesverdurashortalizasolorventosolesplegadolluviasonrisasemocionaventurexploraciondescubrimientoinmensidadpaisajehermosoterrenosdesconocidosnarracionescuentosfantasticosmaravillososincreiblesrealidadimaginacionhistoriasleyendasemocionpasionesentusiasmosabercuriosidadaprendizajeexperienciasviajesmundoaventurasdescubrimientosconocimientosorprendentesinteraccionespersonalesamistadfamiliaresrelacionesafectivasemocionales
