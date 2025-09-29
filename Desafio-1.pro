@@ -4,10 +4,19 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        codecs_lz78.cpp \
+        codecs_rle.cpp \
+        crypto_xor_rot.cpp \
         files.cpp \
         main.cpp \
-        utilidades.cpp
+        pipeline_desencriptar_descomprimir.cpp \
+        utils.cpp
+
 
 HEADERS += \
+    codecs_lz78.h \
+    codecs_rle.h \
+    crypto_xor_rot.h \
     files.h \
-    utilidades.h
+    pipeline_desencriptar_descomprimir.h \
+    utils.h
